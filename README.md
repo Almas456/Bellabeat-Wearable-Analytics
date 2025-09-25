@@ -1,65 +1,130 @@
-## **Project Name:** Bellabeat Wearable Analytics
+Bellabeat: A Data-Driven Analysis of Activity and Sleep Patterns
+1. Introduction
 
-### **Project Overview**
+This report presents a data-driven analysis of user activity and sleep patterns using data from the public Fitbit dataset. The goal is to identify key trends and provide actionable insights that can inform the marketing and product strategies for Bellabeat, a wellness technology company.
 
-This project is an end-to-end analysis of wearable-device data, inspired by Fitbit usage, designed to uncover behavioral trends and generate actionable product and marketing insights for Bellabeat. The analysis leverages day-level activity, sleep, and heart rate metrics to understand user engagement, identify patterns, and segment users into actionable personas. Insights from this study are intended to guide marketing strategies, personalized product recommendations, and retention campaigns across Bellabeat’s product line — **Leaf, Time, Spring, and Membership**.
+The analysis was performed in Google Sheets for data cleaning, exploration, and visualization. Findings highlight opportunities for Bellabeat to encourage more consistent physical activity, reduce sedentary time, and promote healthier sleep habits.
 
-### **Objective**
+2. Data & Methods
 
-The primary goal is to analyze wearable-device usage data to:
+Dataset: Fitbit Fitness Tracker Data (2016)
+Link: https://www.kaggle.com/datasets/arashnic/fitbit
 
-1. Understand daily and hourly activity and sleep patterns.
-2. Segment users into meaningful personas based on behavior.
-3. Identify opportunities for targeted marketing, engagement nudges, and product upsells.
-4. Provide a reproducible analysis pipeline that can be directly applied to real Fitbit data.
+Sample size: ~33 unique users, ~940 daily activity records, ~400 sleep records
 
-### **Data & Methodology**
+Files analyzed:
 
-**1. Data:** Synthetic dataset modeled on Fitbit public data (30 users × 90days).
+dailyActivity_merged.csv (steps, sedentary minutes, calories)
 
-**2. Key fields:** user\_id, date, total\_steps, very\_active\_min, lightly\_active\_min, sedentary\_min, sleep\_min, avg\_hr, calories, active\_flag.
+sleepDay_merged.csv (total minutes asleep, time in bed)
 
-**Processing Steps:**
+dailySteps_merged.csv (validation of steps data)
 
-1. Timestamp parsing and duplicate removal
-2. Definition of active/inactive days
-3. Aggregation of per-user statistics
-4. Feature scaling and normalization
-5. **K-means clustering (k=3)** to identify user personas
-6. Correlation analysis between activity and sleep
-7. Hourly activity profile creation to identify peak engagement windows
-8. Retention proxy analysis (percent of users active per day)
+Data cleaning steps:
 
-**Tools & Libraries:** Python, pandas, numpy, scikit-learn, matplotlib, Jupyter Notebook
+Removed duplicates
 
-### **Key Findings**
+Converted date formats (e.g., “MM/DD/YYYY hh:mm:ss” → “MM/DD/YYYY”)
 
-**Activity Peaks:** Users are most active in the morning (06–09) and evening (17–20).
-**Sleep & Activity Correlation:** Daily activity positively correlates with sleep duration (Pearson r ≈ 0.225).
-**User Personas (k=3):**
+Merged activity and sleep data by Id + Date
 
-  1. **Less Active (13 users):** avg\_steps ≈ 2,599; avg\_sleep ≈ 419 min
-  2. **Moderate (13 users):** avg\_steps ≈ 4,307; avg\_sleep ≈ 428 min
-  3. **Highly Active (4 users):** avg\_steps ≈ 6,712; avg\_sleep ≈ 435 min
-**Engagement Trends:** Simulated retention curves indicate drop-offs after 1–3 weeks, highlighting opportunities for targeted nudges and challenges.
+Handled missing values (replaced with 0 when appropriate)
 
-### **Business & Product Recommendations**
+Tools used: Google Sheets for formulas, pivot tables, and visualizations.
 
-**1. Bellabeat Time:** Target moderate and highly active users with time-of-day ads (morning/evening) and premium workout suggestions.
-**2. Bellabeat Leaf:** Promote sleep-focused features for less active users (“sleep better by moving more”).
-**3. Bellabeat Spring:** Use lunchtime and meal-time reminders for hydration and wellness nudges.
-**4. Membership & Retention Campaigns:** Introduce 7–21 day onboarding nudges, in-app challenges, and weekend events to sustain engagement.
+3. Key Findings
 
-### **Reproducibility & Next Steps**
+Finding 1: Users fall short of the 10,000-step benchmark
 
-1. Replace the sample CSV with actual Fitbit CSVs (dailyActivity.csv, sleepDay.csv, minuteActivity.csv).
-2. Re-run the Jupyter notebook to generate real metrics and visuals.
-3. Export results into **visuals/** and slide decks for executive presentation.
-4. Track KPIs like CTR, trial-to-paid conversion, and 14/30-day retention lift.
+Average steps/day ≈ 7,600, below the recommended 10,000.
 
-### **Key Takeaways**
+The histogram shows a sharp drop-off above 10,000 steps.
 
-1.Wearable usage data can directly inform marketing timing and personalization strategies.
-2.Persona-based segmentation enables tailored product messaging and upsell opportunities.
-3.Activity-sleep correlation provides a foundation for wellness-oriented campaigns.
-4.Mid-term engagement monitoring highlights the importance of timely nudges to improve retention.
+images/Weekday and AVERAGE of TotalSteps.png (Daily Steps Distribution Histogram)
+
+Interpretation: Most users are moderately active or inactive, leaving room for Bellabeat to encourage higher daily movement.
+
+Finding 2: Sedentary time dominates the day
+
+Average sedentary minutes/day ≈ 991 minutes (~16.5 hours).
+
+This is ~70% of a day spent inactive.
+
+Interpretation: Bellabeat has an opportunity to motivate micro-movements and reduce long sedentary periods.
+
+Finding 3: Sleep duration is below recommended levels
+
+Average sleep = 5–7 hours/day, compared to the recommended 7–8 hours.
+
+images/Active Minutes vs Sleep.png)
+
+Interpretation: Sleep improvement is as important as activity for wellness — Bellabeat should emphasize both.
+
+Finding 4: Activity and sleep show weak correlation
+
+Scatter plots show that higher steps or active minutes don’t necessarily lead to longer sleep.
+
+images/Active Minutes vs Sleep.png (Scatter: Active Minutes vs Sleep)
+images/Distribution of Daily Steps.png (Scatter: Steps vs Sleep)
+
+Interpretation: Activity alone is not enough for holistic wellness. Sleep must be addressed independently.
+
+Finding 5: Weekday vs weekend differences
+
+Average steps are slightly higher on weekends.
+
+images/Weekday and AVERAGE of TotalSteps.png (Weekday Average Steps Bar Chart)
+
+Interpretation: Users are more active when free from work routines. Mid-week activity drops sharply.
+
+4. Recommendations
+
+1. Promote Weekday Micro-Challenges
+
+Focus on engaging users between Wednesday and Friday, when activity declines.
+
+Example actions:
+
+Launch “Hump Day Hustle” or “Friday Finish Strong” challenges.
+
+Push notifications at work hours (e.g., 2 PM walk/stretch reminders).
+
+Integrate Bellabeat devices with productivity apps for desk reminders.
+
+2. Gamify the 10,000-Step Goal
+
+Turn 10,000 steps into a fun and rewarding experience.
+
+Example actions:
+
+Daily badges, streaks, or virtual rewards for users crossing 10k steps.
+
+Social sharing of progress inside the Bellabeat app to build community.
+
+3. Launch Sleep Coaching Campaigns
+
+Address the sleep deficit directly.
+
+Example actions:
+
+Bedtime reminders, relaxing sounds, and “sleep hygiene tips.”
+
+Personalized sleep reports inside the app.
+
+Marketing message: “Wellness = activity + rest.”
+
+4. Implement Sedentary Alerts
+
+Tackle the high sedentary time.
+
+Example actions:
+
+Device nudges if users remain sedentary >60 minutes.
+
+Marketing theme: “Little moves matter.”
+
+5. Conclusion
+
+This analysis shows that while Bellabeat users are moderately active, they fall short of step benchmarks, spend excessive time sedentary, and sleep less than recommended. Importantly, physical activity does not automatically improve sleep, underscoring the need for a holistic wellness strategy.
+
+By implementing weekday challenges, gamifying activity, introducing sleep campaigns, and sending sedentary alerts, Bellabeat can strengthen user engagement and position itself as a brand that supports complete wellness — activity + rest.
