@@ -35,7 +35,7 @@ The analysis was performed in Google Sheets for data cleaning, exploration, and 
 
 - **Average steps/day:** ≈ 7,600, which is below the recommended 10,000.
 - The histogram shows a sharp drop-off above 10,000 steps.
-- Images/DistributionofDailySteps.png
+  Images/DistributionofDailySteps.png
 
 
 **Interpretation:** Most users are moderately active or inactive, leaving room for Bellabeat to encourage higher daily movement.
@@ -57,8 +57,8 @@ The analysis was performed in Google Sheets for data cleaning, exploration, and 
 ### Finding 4: Activity and sleep show weak correlation
 
 - Scatter plots show that higher steps or active minutes don’t necessarily lead to longer sleep.
-- Images/ActiveMinutevsSleep.png
-- Images/StepsvsSleep.png
+  Images/ActiveMinutevsSleep.png
+  Images/StepsvsSleep.png
 
 
 **Interpretation:** Activity alone is not enough for holistic wellness. Sleep must be addressed independently.
@@ -66,7 +66,7 @@ The analysis was performed in Google Sheets for data cleaning, exploration, and 
 ### Finding 5: Weekday vs weekend differences
 
 - Average steps are slightly higher on weekends.
-- Images/WeekdayandAVERAGEofTotalSteps.png
+  Images/WeekdayandAVERAGEofTotalSteps.png
 
 
 **Interpretation:** Users are more active when free from work routines. Mid-week activity drops sharply.
