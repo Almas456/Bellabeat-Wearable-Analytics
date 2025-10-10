@@ -66,7 +66,8 @@ The analysis was performed in Google Sheets for data cleaning, exploration, and 
 ### Finding 5: Weekday vs weekend differences
 
 - Average steps are slightly higher on weekends.
-  Images/WeekdayandAVERAGEofTotalSteps.png
+![Average Steps Graph](Images/WeekdayandAVERAGEofTotalSteps.png)
+
 
 
 **Interpretation:** Users are more active when free from work routines. Mid-week activity drops sharply.
